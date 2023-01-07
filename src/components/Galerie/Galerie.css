@@ -1,0 +1,14 @@
+.galerie {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.galerie>img {
+    display: block;
+    margin: auto;
+    max-width: 90vw;
+    width: 20rem;
+    border-radius: 5px;
+    cursor: pointer;
+}

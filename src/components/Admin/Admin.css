@@ -1,0 +1,16 @@
+.notLoggedInContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.notLoggedInContainer>input,
+.notLoggedInContainer>button {
+    width: 80vw;
+    margin: 0.5rem;
+}
+
+.loggedInContainer {
+    text-align: center;
+}

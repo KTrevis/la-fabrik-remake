@@ -1,0 +1,45 @@
+.carrouselContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.carrouselContainer>.image-container>img {
+    max-width: 80%;
+    border-radius: 5px;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+}
+
+.previousImg {
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 1rem;
+    position: absolute;
+    left: 5vw;
+}
+
+.nextImg {
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 1rem;
+    position: absolute;
+    right: 5vw;
+}
+
+.image-container {
+    transition: 250ms ease;
+}
+
+.fade-out {
+    opacity: 0;
+}
+
+.fade-in {
+    opacity: 1;
+}
