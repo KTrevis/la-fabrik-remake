@@ -12,7 +12,7 @@ app.use(express.urlencoded({
     extended: true
 }))
 
-app.use("/images", express.static("../public"))
+app.use("/images", express.static("./public"))
 app.use(express.static("../dist"))
 
 app.use(cors())

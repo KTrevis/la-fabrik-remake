@@ -21,9 +21,9 @@ exports.run = (app) => {
     function uploadImageToGalerie() {
         // Set up the `multer` middleware with the destination and file name options
         const storage = multer.diskStorage({
-            destination: '../public/galerie',
+            destination: './public/galerie',
             filename: (req, file, callback) => {
-                fs.readdir("../public/galerie", (err, files) => {
+                fs.readdir("./public/galerie", (err, files) => {
                     if (err) {
                         return callback(err)
                     }
@@ -67,9 +67,21 @@ exports.run = (app) => {
         })
     }
 
+    function deleteImageFromGalerie() {
+        app.post("/api/admin/galeriedelete", (req, res) => {
+            image = req.body.image.replace("/images", "/public")
+
+            fs.unlink(__dirname + image, (err) => {
+                if (err) throw res.send({ text: err })
+                res.send({ text: image + " supprimé." })
+            })
+        })
+    }
+
     function main() {
         logIn()
         uploadImageToGalerie()
+        deleteImageFromGalerie()
     }
 
     main()

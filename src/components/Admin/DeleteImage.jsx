@@ -3,8 +3,18 @@ import { useState, useEffect } from "react"
 export default function DeleteImage() {
     const [images, setImages] = useState([])
 
-    function handleDeleteImage() {
-        console.log(this.data.image)
+    function handleDeleteImage(event) {
+        event.target.parentNode.style.display = "none"
+        fetch("/api/admin/galeriedelete",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(event.target.dataset)
+            }).then
+            (response => response.json()).then
+            (data => console.log(data))
     }
 
     useEffect(() => {
@@ -13,11 +23,11 @@ export default function DeleteImage() {
         ).then(
             data => {
                 setImages(
-                    data.images.map(image => {
+                    data.images.map((image, i) => {
                         return (
                             <div className="deleteImage">
                                 <img src={image} />
-                                <button onClick={handleDeleteImage} data-image={image}>Supprimer</button>
+                                <button onClick={handleDeleteImage} data-index={i} data-image={image}>Supprimer</button>
                             </div>
                         )
                     })
