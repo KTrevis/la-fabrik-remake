@@ -1,32 +1,29 @@
 import "./Galerie.css"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 import Modal from "../Modal"
 import Carrousel from "../Carrousel/Carrousel"
-
-import galerie0 from "/src/assets/galerie/galerie-0.jpg"
-import galerie1 from "/src/assets/galerie/galerie-1.jpg"
-import galerie2 from "/src/assets/galerie/galerie-2.jpg"
-import galerie3 from "/src/assets/galerie/galerie-3.jpg"
-import galerie4 from "/src/assets/galerie/galerie-4.jpg"
 
 export default function Galerie() {
     document.title = "Galerie"
     const [currentImage, setCurrentImage] = useState(0)
     const [modal, setModal] = useState(false)
+    const [images, setImages] = useState([])
 
-    let images = [
-        galerie0,
-        galerie1,
-        galerie2,
-        galerie3,
-        galerie4
-    ]
-
-    images = images.map(image => {
-        return <img onClick={toggleModal} src={image} />
-    })
+    useEffect(() => {
+        fetch("/api/galerie/images").then(
+            response => response.json()
+        ).then(
+            data => {
+                setImages(
+                    data.images.map(image => {
+                        return (<img onClick={toggleModal} src={"./galerie/" + image} />)
+                    })
+                )
+            }
+        )
+    }, [])
 
     function toggleModal(event, indexOfImage) {
         if (event.target.parentElement.className.includes("image-container")) {

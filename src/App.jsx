@@ -3,7 +3,7 @@ import Galerie from "./components/Galerie/Galerie"
 import Evenements from "./components/Events/Events"
 import Admin from "./components/Admin/Admin"
 
-import { Routes, Route, BrowserRouter } from "react-router-dom"
+import { Routes, Route } from "react-router-dom"
 
 function App() {
   return (

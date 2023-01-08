@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "install": "cd api && npm install",
-    "start": "concurrently --kill-others-on-fail \"npm run dev\" \"cd api && npm run dev\"",
+    "start": "cd api && npm run dev",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"

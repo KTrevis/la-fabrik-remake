@@ -1,7 +1,7 @@
 import "./Home.css"
 
-import carrouselHome1 from "/src/assets/carrousel-home/carrousel-home-1.jpg"
-import carrouselHome0 from "/src/assets/carrousel-home/carrousel-home-0.jpg"
+import carrouselHome1 from "/public/carrousel-home/carrousel-home-1.jpg"
+import carrouselHome0 from "/public/carrousel-home/carrousel-home-0.jpg"
 
 import { useState, useEffect } from "react"
 

@@ -25,6 +25,7 @@ export default function NotLoggedIn(props) {
             response => response.json()
         ).then(
             data => {
+                console.log(data)
                 props.logIn(data.connected)
             }
         )
