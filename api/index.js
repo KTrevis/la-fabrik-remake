@@ -8,7 +8,7 @@ const admin = require("./admin")
 const galerie = require("./galerie")
 
 app.use("/images", express.static("./public"))
-app.use(express.static("./dist"))
+app.use(express.static("../dist"))
 
 app.use(cors())
 app.listen(port, () => console.log(`Server started at http://localhost:${port}`))

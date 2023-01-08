@@ -7,7 +7,7 @@
     "install": "cd api && npm install",
     "start": "cd api && npm run start",
     "dev": "vite",
-    "build": "vite build && rm -rf api/dist && mv dist api/",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
