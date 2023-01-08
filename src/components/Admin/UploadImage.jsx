@@ -25,6 +25,7 @@ export default function UploadImage() {
             alert("Erreur")
         }
     }
+
     return (
         <>
             <p>Ajouter une image à la galerie</p>

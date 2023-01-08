@@ -5,7 +5,6 @@ import DeleteImage from "./DeleteImage"
 import AddEvent from "./AddEvent"
 
 export default function loggedIn() {
-
     return (
         <div className="loggedInContainer">
             <UploadImage />
