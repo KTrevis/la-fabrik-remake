@@ -12,3 +12,5 @@ app.listen(5000, () => console.log("Server started at http://localhost:5000"))
 
 admin.run(app)
 galerie.run(app)
+
+module.exports = app
