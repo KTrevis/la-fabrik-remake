@@ -12,20 +12,23 @@ export default function Events(props) {
     document.title = "Événements"
     const [modal, setModal] = useState(false)
     const [modalContent, setModalContent] = useState(<img src="" />)
+    const [events, setEvents] = useState([{}])
     const name = useParams().name
 
 
-    const events = [
-        {
-            date: "01/06/2023",
-            name: "Soirée SBK",
-            image: "https://lafabrikdemeaux.fr/public/evenements/IMG_55321.jpg"
-        },
-    ]
+    useEffect(() => {
+        fetch("/api/admin/events/query").then(
+            response => response.json()
+        ).then(
+            data => {
+                setEvents(data.events)
+            }
+        )
+    }, [])
 
     useEffect(() => {
         events.map(event => {
-            if (event.name == name) {
+            if (event.name == name && name != undefined) {
                 setModal(true)
                 setModalContent(<img src={event.image} />)
             }
@@ -53,12 +56,14 @@ export default function Events(props) {
         })
     }
 
+    //Cette fonction est appellé à chaque fois que react-calendar génére une case du calendrier
     function addEventsToCalendar(date, view) {
         let eventName
 
         //On itére à travers les événements, et si la date d'un événement correspond à la date de la case actuelle, on change le contenu de la case
         events.map(event => {
-            if (new Date(event.date).getTime() == date.getTime() && view == "month") {
+            let eventDate = new Date(event.date)
+            if (eventDate.setHours(0, 0, 0) == date.getTime() && view == "month") {
                 eventName = <p>{event.name}</p>
             }
         })
