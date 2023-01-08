@@ -18,7 +18,7 @@ export default function Galerie() {
             data => {
                 setImages(
                     data.images.map(image => {
-                        return (<img onClick={toggleModal} src={"/images/galerie/" + image} />)
+                        return (<img onClick={toggleModal} src={image} />)
                     })
                 )
             }
@@ -39,7 +39,7 @@ export default function Galerie() {
 
     return (
         <div className="galerie">
-            {images}
+            {images.reverse()}
             {
                 modal ? <Modal toggleModal={toggleModal} modalContent={<Carrousel images={images} currentImage={currentImage} />} /> : ""
             }

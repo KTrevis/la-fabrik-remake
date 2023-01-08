@@ -7,7 +7,12 @@ const port = process.env.PORT || 5000
 const admin = require("./admin")
 const galerie = require("./galerie")
 
-app.use("/images", express.static("./public"))
+app.use(express.json())
+app.use(express.urlencoded({
+    extended: true
+}))
+
+app.use("/images", express.static("../public"))
 app.use(express.static("../dist"))
 
 app.use(cors())

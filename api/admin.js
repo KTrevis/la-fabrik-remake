@@ -9,22 +9,21 @@ exports.run = (app) => {
             password: "1234"
         }
 
-        app.get("/api/admin/login", (req, res) => {
-            if (req.query.username == admin.username && req.query.password == admin.password) {
-                res.json({ connected: true })
+        app.post("/api/admin/login", (req, res) => {
+            if (req.body.username == admin.username && req.body.password == admin.password) {
+                return res.send({ connected: true })
             }
-            else {
-                res.json({ connected: false })
-            }
+
+            return res.send({ connected: false })
         })
     }
 
     function uploadImageToGalerie() {
         // Set up the `multer` middleware with the destination and file name options
         const storage = multer.diskStorage({
-            destination: './public/galerie',
+            destination: '../public/galerie',
             filename: (req, file, callback) => {
-                fs.readdir("./public/galerie", (err, files) => {
+                fs.readdir("../public/galerie", (err, files) => {
                     if (err) {
                         return callback(err)
                     }

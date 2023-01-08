@@ -3,7 +3,11 @@ exports.run = (app) => {
 
     function getGalerieImages() {
         app.get("/api/galerie/images", (req, res) => {
-            let images = fs.readdirSync("./public/galerie")
+            let images = fs.readdirSync("../public/galerie")
+
+            images = images.map(image => {
+                return "/images/galerie/" + image
+            })
 
             res.send({ images: images })
         })

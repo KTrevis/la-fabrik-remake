@@ -14,3 +14,15 @@
 .loggedInContainer {
     text-align: center;
 }
+
+.deleteImage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.deleteImage>img {
+    max-width: 90vw;
+    border-radius: 5px;
+    max-height: 30rem;
+}

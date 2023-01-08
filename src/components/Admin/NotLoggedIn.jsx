@@ -21,14 +21,16 @@ export default function NotLoggedIn(props) {
     }
 
     function logIn() {
-        fetch("/api/admin/login?username=" + formData.username + "&password=" + formData.password).then(
-            response => response.json()
-        ).then(
-            data => {
-                console.log(data)
-                props.logIn(data.connected)
-            }
-        )
+        fetch("/api/admin/login",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData)
+            }).then
+            (response => response.json()).then
+            (data => props.logIn(data.connected))
     }
 
     return (
