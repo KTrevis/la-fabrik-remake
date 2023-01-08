@@ -1,7 +1,7 @@
 import "./Home.css"
 
-import carrouselHome1 from "/public/carrousel-home/carrousel-home-1.jpg"
-import carrouselHome0 from "/public/carrousel-home/carrousel-home-0.jpg"
+import image0 from "./c0.jpg"
+import image1 from "./c1.jpg"
 
 import { useState, useEffect } from "react"
 
@@ -10,14 +10,11 @@ import Carrousel from "../Carrousel/Carrousel"
 export default function Home() {
     document.title = "Accueil"
 
-    let images = [
-        carrouselHome0,
-        carrouselHome1
-    ]
+    let images = [image0, image1]
 
-    images = images.map(image => {
-        return <img src={image} />
-    })
+    for (let i = 0; i < 2; i++) {
+        images[i] = (<img src={images[i]} alt="" />)
+    }
 
     return (
         <div className="home">

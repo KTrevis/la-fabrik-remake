@@ -2,13 +2,16 @@ const express = require("express")
 const cors = require("cors")
 const app = express()
 
+const port = process.env.PORT || 5000
+
 const admin = require("./admin")
 const galerie = require("./galerie")
 
-app.use(express.static("../dist"))
+app.use("/images", express.static("./public"))
+app.use(express.static("./dist"))
 
 app.use(cors())
-app.listen(5000, () => console.log("Server started at http://localhost:5000"))
+app.listen(port, () => console.log(`Server started at http://localhost:${port}`))
 
 admin.run(app)
 galerie.run(app)

@@ -18,7 +18,7 @@ export default function Galerie() {
             data => {
                 setImages(
                     data.images.map(image => {
-                        return (<img onClick={toggleModal} src={"./galerie/" + image} />)
+                        return (<img onClick={toggleModal} src={"/images/galerie/" + image} />)
                     })
                 )
             }

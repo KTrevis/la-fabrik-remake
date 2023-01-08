@@ -22,9 +22,9 @@ exports.run = (app) => {
     function uploadImageToGalerie() {
         // Set up the `multer` middleware with the destination and file name options
         const storage = multer.diskStorage({
-            destination: '../src/assets/galerie',
+            destination: './public/galerie',
             filename: (req, file, callback) => {
-                fs.readdir("../src/assets/galerie", (err, files) => {
+                fs.readdir("./public/galerie", (err, files) => {
                     if (err) {
                         return callback(err)
                     }
